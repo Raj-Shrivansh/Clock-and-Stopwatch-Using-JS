@@ -1,3 +1,4 @@
+// This function for clock
 let timeinterval=setInterval(()=>{
     let dateTime=new Date();
     let hours=dateTime.getHours();
@@ -27,19 +28,19 @@ let timeinterval=setInterval(()=>{
             day_string="Tuesday";
             break;
         case 3:
-            day_string="Wednesday"
+            day_string="Wednesday";
             break;
         case 4:
-            day_string="Thursday"
+            day_string="Thursday";
             break;
         case 5:
-            day_string="Friday"
+            day_string="Friday";
             break;
         case 6:
-            day_string="Saturday"
+            day_string="Saturday";
             break;
         case 7:
-            day_string="Sunday"
+            day_string="Sunday";
             break;   
     }
     document.getElementById("date").textContent=`${dateTime.toLocaleDateString()}(${day_string})`;
