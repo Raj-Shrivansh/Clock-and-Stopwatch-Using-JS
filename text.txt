@@ -1,0 +1,55 @@
+    <div class="clock" id="div2">
+        <span id="stopwatch">00:00:00:00</span><br>
+        <button class="btn" id="start">Start Timer</button>
+        <button class="btn" id="stop">Stop Timer</button>
+        <button class="btn" id="reset">Reset Timer</button> 
+    </div>
+
+    // For Stopwatch
+    let [miliseconds,seconds, minutes, hours] =[0,0,0,0];
+    let timerElement=document.getElementById('stopwatch')
+    let time=null;
+    
+    document.getElementById('start').addEventListener('click',()=>{
+        console.log('start click')
+        if(time!=null){
+            clearInterval(time)
+        }
+        time=setInterval(Timer,10)
+    })
+    document.getElementById('stop').addEventListener('click',()=>{
+        clearInterval(time)
+    })
+    document.getElementById('reset').addEventListener('click',()=>{
+        clearInterval(time);
+        console.log(miliseconds,seconds,minutes,hours)
+        // [miliseconds,seconds, minutes, hours] =[0,0,0,0]
+        timerElement.textContent='00:00:00:00'
+    })
+    function Timer(){
+        miliseconds+=10
+        if(miliseconds>=1000){
+            miliseconds=0
+            seconds++;
+            if (seconds>=60){
+                minutes++
+                seconds=0;
+                if(minutes>=60){
+                    minutes=0;
+                    hours++;
+                }
+            }
+        }
+        if(hours< 10){
+            h="0"+hours;
+        }
+        if(minutes<10){
+            m="0"+minutes;
+        }
+        if(seconds<10){
+            s="0"+seconds
+        }
+        ms=miliseconds
+        console.log(hours,minutes,seconds)
+        timerElement.textContent=`${h}:${m}:${s}:${ms.toString().slice(0,2)}`
+    }
