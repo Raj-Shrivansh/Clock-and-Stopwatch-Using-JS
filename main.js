@@ -101,4 +101,5 @@ let time=null;
 function sum(a,b){
     return a+b;
 }
+document.write("hello")
 console.log(2,4)
